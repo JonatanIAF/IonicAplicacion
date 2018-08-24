@@ -52,6 +52,7 @@ export class Contact {
   phone: number;
   birth: Date;
   active: boolean;
+  pic_url: string = "../assets/imgs/contacto.png";
 }
  
 export class ContactList {

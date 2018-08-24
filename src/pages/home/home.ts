@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { ContactProvider, Contact, ContactList } from '../../providers/contact/contact';
- 
+import { GuardarPage } from '../guardar/guardar';
+import { EditContactPage } from '../edit-contact/edit-contact';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -19,11 +21,11 @@ export class HomePage {
   }
  
   addContact() {
-    this.navCtrl.push('GuardarPage');
+    this.navCtrl.push(GuardarPage);
   }
  
   editContact(item: ContactList) {
-    this.navCtrl.push('EditContactPage', { key: item.key, contact: item.contact });
+    this.navCtrl.push(EditContactPage, { key: item.key, contact: item.contact });
   }
  
   removeContact(item: ContactList) {

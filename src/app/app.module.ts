@@ -6,10 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ContactProvider } from '../providers/contact/contact';
-
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
-
+import { GuardarPage } from '../pages/guardar/guardar';
+import { EditContactPage } from '../pages/edit-contact/edit-contact';
 
 
 
@@ -17,6 +17,8 @@ import { DatePipe } from '@angular/common';
   declarations: [
     MyApp,
     HomePage,
+    GuardarPage,
+    EditContactPage
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,8 @@ import { DatePipe } from '@angular/common';
   entryComponents: [
     MyApp,
     HomePage,
+    GuardarPage,
+    EditContactPage
   ],
   providers: [
     StatusBar,
