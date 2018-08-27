@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar color="principal">
 		<ion-title>
 			Guardar
 		</ion-title>
@@ -9,7 +9,8 @@
 <ion-content padding>
  
 	<ion-list>
- 
+
+
 		<ion-item>
 			<ion-label stacked>Nombre</ion-label>
 			<ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
@@ -50,5 +51,11 @@
 	</ion-list>
  
 	<button ion-button block (click)="save()">Guardar</button>
- 
+	<button ion-button block (click)="tomarFoto()">Tomar Foto</button>
+	<button ion-button block (click)="elegirFoto()">Elegir una foto</button>
+	<ion-item>
+			<ion-avatar item-start>
+				<img src= "{{ myFoto }}">
+			  </ion-avatar>
+	</ion-item>
 </ion-content>

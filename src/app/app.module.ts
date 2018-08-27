@@ -10,7 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import { GuardarPage } from '../pages/guardar/guardar';
 import { EditContactPage } from '../pages/edit-contact/edit-contact';
-
+import { Camera} from '@ionic-native/camera';
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import { EditContactPage } from '../pages/edit-contact/edit-contact';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, 
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
     ContactProvider
