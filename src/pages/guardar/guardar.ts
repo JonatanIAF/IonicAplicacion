@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ContactProvider, Contact } from '../../providers/contact/contact';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions} from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @IonicPage()
 @Component({
@@ -12,8 +13,11 @@ export class GuardarPage {
   model: Contact;
   key: string;
   myFoto:any;
+  path: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private contactProvider: ContactProvider, private toast: ToastController, private camera:Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contactProvider: ContactProvider, 
+    private toast: ToastController, private camera:Camera, private picker:ImagePicker) {
+    this.path="../../assets/imgs/contacto.png";
     if (this.navParams.data.contact && this.navParams.data.key) {
       this.model = this.navParams.data.contact;
       this.key =  this.navParams.data.key;
@@ -39,8 +43,41 @@ export class GuardarPage {
       return this.contactProvider.insert(this.model);
     }
   }
+  choosePicture(){
+    let option={
+      title: 'Selecciona',
+      message: 'Selecciona una imagen',
+      maximumImagesCount: 1,
+      outType: 0
+    };
 
-  tomarFoto(){
+    this.picker.getPictures(option).then(results=>{
+      for(var i=0; i< results.length; i++){
+        this.path=results[i];
+        alert("Galeria Path: "+ results[i]);
+      }
+    },err=>{
+      alert("Error"+ err);
+    })
+  }
+
+  takePicture(){
+      let options: CameraOptions = {
+        quality: 100,
+        destinationType: this.camera.DestinationType.FILE_URI,
+        encodingType: this.camera.EncodingType.PNG,
+        mediaType: this.camera.MediaType.PICTURE
+    };
+
+    this.camera.getPicture(options).then(url=>{
+      this.path=url;
+      alert("Este es su url"+ url);
+    },err=>{
+      alert("Error"+ err);
+    }) 
+  }
+
+  /*tomarFoto(){
     const options: CameraOptions = {
       quality: 80,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -55,9 +92,9 @@ export class GuardarPage {
     }, (err) => {
      // Handle error
     });
-  }
+  }*/
 
-  elegirFoto(){
+  /*elegirFoto(){
     const options: CameraOptions = {
       quality: 80,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -72,10 +109,6 @@ export class GuardarPage {
     }, (err) => {
      // Handle error
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GuardarPage');
-  }
+  }*/
 
 }

@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import { GuardarPage } from '../pages/guardar/guardar';
 import { EditContactPage } from '../pages/edit-contact/edit-contact';
 import { Camera} from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { Camera} from '@ionic-native/camera';
   providers: [
     StatusBar,
     SplashScreen, 
-    Camera,
+    Camera, 
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
     ContactProvider
